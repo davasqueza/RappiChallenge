@@ -1,0 +1,14 @@
+{
+  "name": "RappiChallenge",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-animate": "1.7.5",
+    "angular-resource": "1.7.5",
+    "angular-material": "1.1.10",
+    "angular": "1.7.5",
+    "angular-route": "1.7.5"
+  },
+  "resolutions": {
+    "angular": "1.7.5"
+  }
+}
