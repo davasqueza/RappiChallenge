@@ -5,7 +5,7 @@
     .module('App')
     .directive('mainMenu', menu);
 
-  function menu() {
+  function menu($location, $route) {
     return {
       restrict: 'EA',
       templateUrl: "app/global/menu/menu.html",
@@ -52,9 +52,14 @@
           scope.menuItems = scope.items;
           scope.toggle();
 
-          path = [];
+          if(menu){
+            path.push(menu.id);
+          }
 
-          //Redirigir a la categoría
+          $location.url(path.join("/"));
+          $route.reload();
+
+          path = [];
         }
       }
     };
