@@ -12,6 +12,11 @@
         controller: 'LandingController',
         controllerAs: 'vm'
       })
+      .when('/:categoryPath*', {
+        templateUrl: 'app/category/category.html',
+        controller: 'CategoryController',
+        controllerAs: 'vm'
+      })
       .otherwise({
         redirectTo: '/'
       });
