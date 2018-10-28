@@ -1,0 +1,40 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+  <md-content layout-padding>
+    <div layout="row" layout-align="end">
+      <md-button class="md-icon-button" ng-click="toggle()" aria-label="close">
+        <i class="material-icons ng-scope">close</i>
+      </md-button>
+    </div>
+
+    <md-list flex>
+      <md-list-item
+        ng-if="currentMenu"
+        ng-click="goBack()"
+        class="menu-item"
+        md-ink-ripple
+      >
+        <i class="material-icons">
+          arrow_back_ios
+        </i>
+        <p> {{currentMenu.name}} </p>
+      </md-list-item>
+
+      <md-list-item
+        ng-if="currentMenu"
+        ng-click="redirectToCategory()"
+        class="menu-item"
+        md-ink-ripple
+      >
+        <b> Ver todo {{currentMenu.name}} </b>
+      </md-list-item>
+      <md-list-item
+        ng-click="selectMenu(menu)"
+        class="menu-item"
+        ng-repeat="menu in menuItems"
+        md-ink-ripple
+      >
+        <p> {{menu.name}} </p>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>

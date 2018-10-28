@@ -1,7 +1,22 @@
 <div layout="column" layout-fill ng-controller="MainController as MainCtrl">
-  <md-toolbar class="md-medium-tall" layout-align="center center" layout="row" md-whiteframe="5">
-    {{MainCtrl.mainTest}}
-  </md-toolbar>
+  <md-toolbar
+    class="md-medium-tall"
+    layout-align="center center"
+    layout="row"
+    md-whiteframe="5"
+  >
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="menu" ng-click="MainCtrl.toggleMenu()">
+        <i class="material-icons">menu</i>
+      </md-button>
+    </div>
+  </md-toolbar >
+
+  <main-menu
+    ng-if="MainCtrl.menuItems.length"
+    toggle="MainCtrl.toggleMenu()"
+    items="MainCtrl.menuItems"
+  ></main-menu>
 
   <md-content flex id="mainContainer">
     <md-content ng-view flex layout="column" class="ng-view-container"></md-content>

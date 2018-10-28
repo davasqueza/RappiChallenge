@@ -6,7 +6,9 @@
     "angular-resource": "1.7.5",
     "angular-material": "1.1.10",
     "angular": "1.7.5",
-    "angular-route": "1.7.5"
+    "angular-route": "1.7.5",
+    "angular-toastr": "^2.1.1",
+    "underscore": "^1.9.1"
   },
   "resolutions": {
     "angular": "1.7.5"
