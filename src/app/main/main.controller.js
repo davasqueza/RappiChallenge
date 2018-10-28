@@ -6,8 +6,13 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController() {
+  function MainController($mdSidenav) {
     var vm = this;
-    vm.mainTest = "Working main controller";
+
+    vm.toggleMenu = toggleMenu;
+
+    function toggleMenu() {
+      $mdSidenav('left').toggle();
+    }
   }
 })();
