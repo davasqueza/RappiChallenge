@@ -7,8 +7,33 @@
     </div>
 
     <md-list flex>
-      <md-list-item md-ink-ripple>
-        <p> Menú </p>
+      <md-list-item
+        ng-if="currentMenu"
+        ng-click="goBack()"
+        class="menu-item"
+        md-ink-ripple
+      >
+        <i class="material-icons">
+          arrow_back_ios
+        </i>
+        <p> {{currentMenu.name}} </p>
+      </md-list-item>
+
+      <md-list-item
+        ng-if="currentMenu"
+        ng-click="redirectToCategory(currentMenu)"
+        class="menu-item"
+        md-ink-ripple
+      >
+        <b> Ver todo {{currentMenu.name}} </b>
+      </md-list-item>
+      <md-list-item
+        ng-click="selectMenu(menu)"
+        class="menu-item"
+        ng-repeat="menu in menuItems"
+        md-ink-ripple
+      >
+        <p> {{menu.name}} </p>
       </md-list-item>
     </md-list>
   </md-content>

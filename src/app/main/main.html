@@ -13,7 +13,9 @@
   </md-toolbar >
 
   <main-menu
+    ng-if="MainCtrl.menuItems.length"
     toggle="MainCtrl.toggleMenu()"
+    items="MainCtrl.menuItems"
   ></main-menu>
 
   <md-content flex id="mainContainer">
