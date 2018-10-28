@@ -25,3 +25,12 @@ html {
   min-height: 200px;
   max-height: 200px;
 }
+
+/*
+  Utils
+*/
+
+.disable-hyperlinks{
+  color: inherit;
+  text-decoration: inherit;
+}
