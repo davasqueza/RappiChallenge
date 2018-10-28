@@ -1,0 +1,36 @@
+.shelf-card {
+  overflow: hidden;
+}
+
+.shelf-card .title{
+  font-size: 18px;
+  color: #000;
+  margin: 5px 0 5px 0;
+}
+
+.shelf-card .subtitle{
+  font-size: 14px;
+  color: #000;
+  opacity: 0.87;
+  margin: 5px 0 5px 0;
+}
+
+.shelf-card .header{
+  position: relative;
+}
+
+.shelf-card .price {
+  position: absolute;
+  top: 20px;
+  padding: 8px 15px;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.shelf-card .image {
+  height: 200px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
