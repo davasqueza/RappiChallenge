@@ -1,5 +1,16 @@
 <md-content class="md-padding">
   <breadcrumb></breadcrumb>
+  <div layout="row" layout-align="end">
+    <md-button>Filtrar</md-button>
+
+
+    <md-input-container>
+      <label>Ordenar por:</label>
+      <md-select ng-model="vm.sort">
+        <md-option ng-repeat="sort in vm.sortBy" ng-value="sort.sortExpression">{{sort.label}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
   <div layout="row" layout-align="center">
     <div
       class="products-container"
@@ -7,7 +18,7 @@
       layout-align="space-between center"
       layout-wrap>
       <a
-        ng-repeat="product in vm.products"
+        ng-repeat="product in vm.products | orderBy: vm.sort"
         ng-include="'app/category/shelf/shelf.html'"
         ng-href="/{{product.id}}/p"
         class="disable-hyperlinks"
