@@ -1,0 +1,31 @@
+<md-content class="md-padding">
+  <breadcrumb></breadcrumb>
+  <div layout="row" layout-align="space-between center">
+    <md-button class="md-raised md-primary" ng-click="vm.openFilterDialog($event)">Filtrar</md-button>
+
+    <md-input-container>
+      <label>Ordenar por:</label>
+      <md-select ng-model="vm.sort">
+        <md-option ng-repeat="sort in vm.sortBy" ng-value="sort.sortExpression">{{sort.label}}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div layout="row" layout-align="center">
+    <div
+      class="products-container"
+      layout="row"
+      layout-align="start center"
+      layout-wrap>
+      <a
+        ng-repeat="product in products = (vm.products | orderBy: vm.sort | filter: vm.filters : vm.comparator)"
+        ng-include="'app/category/shelf/shelf.html'"
+        ng-href="/{{product.id}}/p"
+        class="disable-hyperlinks"
+        flex-xs="100"
+        flex-sm="50"
+        flex="25"
+      ></a>
+      <h2 ng-if="!products.length">No existen productos para tu criterio de búsqueda</h2>
+    </div>
+  </div>
+</md-content>

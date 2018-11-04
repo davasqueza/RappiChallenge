@@ -1,0 +1,13 @@
+<div layout="row" layout-align="start center" flex>
+  <md-button class="md-icon-button" ng-href="/">
+    <i class="material-icons">
+      home
+    </i>
+  </md-button>
+  <div ng-repeat="category in breadcrumb" layout="row" layout-align="start center">
+    <i class="material-icons">
+      arrow_forward_ios
+    </i>
+    <md-button ng-class="{'md-primary': $last}" ng-href="{{category.path}}">{{category.name}}</md-button>
+  </div>
+</div>

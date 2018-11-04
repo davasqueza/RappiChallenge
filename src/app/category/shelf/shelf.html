@@ -1,0 +1,24 @@
+<md-card class="shelf-card">
+  <div class="header">
+    <div class="price" md-whiteframe="2">
+      {{product.price | currency}}
+    </div>
+    <div class="image" ng-style="{'background-image': 'url(/assets/images/products/'+product.image+')'}">
+      <div class="overlay-color"></div>
+    </div>
+  </div>
+  <md-card-title class="shelf-card-title">
+    <md-card-title-text layout="row" layout-align="center">
+      <h2 class="title">{{product.name}}</h2>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content layout="row" layout-align="center">
+    <md-button layout="row" layout-align="space-between center">
+      <i class="material-icons">
+        add_shopping_cart
+      </i>
+      &nbsp;
+      <span>Agregar al carrito</span>
+    </md-button>
+  </md-card-content>
+</md-card>
