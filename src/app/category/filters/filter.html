@@ -14,7 +14,7 @@
 
       <md-input-container>
         <label>Rango de precios:</label>
-        <md-select ng-model="vm.filters.price">
+        <md-select ng-model="vm.filters.price" ng-model-options="{trackBy: '$value.min'}">
           <md-option ng-repeat="range in vm.priceFilter" ng-value="range">
             <span>{{range.min | currency}}</span>
             <span> - </span>
@@ -26,7 +26,7 @@
 
       <md-input-container>
         <label>Cantidad:</label>
-        <md-select ng-model="vm.filters.quantity">
+        <md-select ng-model="vm.filters.quantity" ng-model-options="{trackBy: '$value.min'}">
           <md-option ng-repeat="range in vm.quantityFilter" ng-value="range">
             <span>{{range.min}}</span>
             <span> - </span>

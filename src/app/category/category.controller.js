@@ -10,6 +10,7 @@
     var vm = this;
 
     vm.openFilterDialog = openFilterDialog;
+    vm.comparator = comparator;
     vm.filters = {};
 
     vm.sortBy = [
@@ -41,7 +42,7 @@
         templateUrl: "app/category/filters/filter.html",
         targetEvent: $event,
         locals: {
-          filters: vm.filters,
+          filters: angular.copy(vm.filters),
           maxPrice: _.max(vm.products, "price").price,
           maxQuantity: _.max(vm.products, "quantity").quantity
         }
@@ -50,6 +51,22 @@
           vm.filters = filters;
         }
       });
+    }
+
+    function comparator(actual, expected) {
+      var isValid;
+
+      if(_.isObject(expected)){
+        var isValidMin = actual > expected.min;
+        var isValidMax = expected.max ? actual < expected.max : true;
+
+        isValid = isValidMax && isValidMin;
+      }
+      else{
+       isValid = actual === expected;
+      }
+
+      return isValid;
     }
 
     loadProducts();
