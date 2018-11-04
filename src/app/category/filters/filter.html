@@ -1,0 +1,52 @@
+<md-dialog>
+  <md-content layout-padding>
+
+    <div>
+      <!--disponibilidad, rango de precios, cantidad en stock.-->
+
+      <md-input-container>
+        <label>Disponibilidad:</label>
+        <md-select ng-model="vm.filters.available">
+          <md-option ng-value="true">Productos disponibles</md-option>
+          <md-option ng-value="false">Productos no disponibles</md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Rango de precios:</label>
+        <md-select ng-model="vm.filters.price">
+          <md-option ng-repeat="range in vm.priceFilter" ng-value="range">
+            <span>{{range.min | currency}}</span>
+            <span> - </span>
+            <span ng-if="range.max">{{range.max | currency}}</span>
+            <span ng-if="!range.max">en adelante</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Cantidad:</label>
+        <md-select ng-model="vm.filters.quantity">
+          <md-option ng-repeat="range in vm.quantityFilter" ng-value="range">
+            <span>{{range.min}}</span>
+            <span> - </span>
+            <span ng-if="range.max">{{range.max}}</span>
+            <span ng-if="!range.max">en adelante</span>
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+
+    <div layout="row" layout-align="end center">
+      <md-button ng-click="vm.closeFiltersDialog()" class="md-raised">
+        Cancelar
+      </md-button>
+      <md-button ng-click="vm.clearFilters()" class="md-raised">
+        Limpiar
+      </md-button>
+      <md-button ng-click="vm.search()" class="md-raised md-primary">
+        Buscar
+      </md-button>
+    </div>
+  </md-content>
+</md-dialog>
