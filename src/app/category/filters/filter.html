@@ -1,10 +1,8 @@
 <md-dialog>
   <md-content layout-padding>
 
-    <div>
-      <!--disponibilidad, rango de precios, cantidad en stock.-->
-
-      <md-input-container>
+    <div layout-xs="column">
+      <md-input-container flex-xs="100">
         <label>Disponibilidad:</label>
         <md-select ng-model="vm.filters.available">
           <md-option ng-value="true">Productos disponibles</md-option>
@@ -12,7 +10,7 @@
         </md-select>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container flex-xs="100">
         <label>Rango de precios:</label>
         <md-select ng-model="vm.filters.price" ng-model-options="{trackBy: '$value.min'}">
           <md-option ng-repeat="range in vm.priceFilter" ng-value="range">
@@ -24,7 +22,7 @@
         </md-select>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container flex-xs="100">
         <label>Cantidad:</label>
         <md-select ng-model="vm.filters.quantity" ng-model-options="{trackBy: '$value.min'}">
           <md-option ng-repeat="range in vm.quantityFilter" ng-value="range">
@@ -37,7 +35,7 @@
       </md-input-container>
     </div>
 
-    <div layout="row" layout-align="end center">
+    <div layout="row" layout-align="end center" layout-wrap>
       <md-button ng-click="vm.closeFiltersDialog()" class="md-raised">
         Cancelar
       </md-button>
