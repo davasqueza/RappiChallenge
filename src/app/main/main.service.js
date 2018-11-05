@@ -9,6 +9,7 @@
     var service = {
       getAllCategories: getAllCategories,
       getProductsByCategoryID: getProductsByCategoryID,
+      getProductByID: getProductByID,
       getCartSummary: getCartSummary,
       addToCart: addToCart,
       removeToCart: removeToCart
@@ -31,6 +32,14 @@
       return resource.products.get().$promise.then(function (response) {
         return _.filter(response.products, function (product) {
           return product.sublevel_id === categoryID;
+        })
+      });
+    }
+
+    function getProductByID(productID) {
+      return resource.products.get().$promise.then(function (response) {
+        return _.find(response.products, function (product) {
+          return product.id === productID;
         })
       });
     }
