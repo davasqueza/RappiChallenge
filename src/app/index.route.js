@@ -12,6 +12,11 @@
         controller: 'LandingController',
         controllerAs: 'vm'
       })
+      .when('/:productID*/p', {
+        templateUrl: 'app/product/product.html',
+        controller: 'ProductController',
+        controllerAs: 'vm'
+      })
       .when('/:categoryPath*', {
         templateUrl: 'app/category/category.html',
         controller: 'CategoryController',
