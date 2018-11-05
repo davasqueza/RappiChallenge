@@ -1,0 +1,21 @@
+.product-card{
+  width: 100%;
+  max-width: 684px;
+}
+
+.product-card .price {
+  position: absolute;
+  top: 20px;
+  padding: 8px 15px;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.product-card .image {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
