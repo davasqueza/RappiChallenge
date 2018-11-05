@@ -37,6 +37,16 @@
         });
     }
 
+    function detectLastCategory() {
+      MainService.getCategoryByPath($routeParams.categoryPath)
+        .then(function (category) {
+          vm.showSearchByName = _.isUndefined(category.sublevels);
+        })
+        .catch(function (error) {
+          $log.warn("Error while trying to detect last item", error.message);
+        });
+    }
+
     function openFilterDialog($event) {
       $mdDialog.show({
         controller: "FilterController",
@@ -79,5 +89,6 @@
     }
 
     loadProducts();
+    detectLastCategory();
   }
 })();
