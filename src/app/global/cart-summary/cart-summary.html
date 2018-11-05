@@ -46,6 +46,10 @@
         <md-divider></md-divider>
       </a>
 
+      <h3 ng-if="!items.length">
+        Tu carrito de compras está vacío
+      </h3>
+
       <span flex></span>
 
       <md-button class="md-primary md-raised" ng-click="toggle()" aria-label="continue buy">
