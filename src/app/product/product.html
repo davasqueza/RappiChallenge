@@ -1,0 +1,51 @@
+<md-content layout="row" layout-align="center">
+  <md-card class="product-card">
+    <div class="header">
+      <div class="price" md-whiteframe="2">
+        {{vm.product.price | currency}}
+      </div>
+
+      <div
+        class="image"
+        ng-style="{'background-image': 'url(/assets/images/products/'+vm.product.image+')'}"
+      ></div>
+    </div>
+    <md-card-title>
+      <md-card-title-text layout="row" layout-align="center">
+        <h1 class="title">{{vm.product.name}}</h1>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <div layout="row" layout-xs="column" layout-align="space-between center" layout-align-xs="start start">
+        <div layout="column" flex-xs="100">
+          <b>Precio:</b>
+          <span>{{vm.product.price | currency}}</span>
+        </div>
+        <div layout="column" flex-xs="100">
+          <b>¿Disponible para la venta? :</b>
+          <span>{{vm.product.available ? 'Sí' : 'No'}}</span>
+        </div>
+        <div layout="column" flex-xs="100">
+          <b>Unidades disponibles:</b>
+          <span>{{vm.product.quantity}}</span>
+        </div>
+      </div>
+
+      <div layout="row" layout-align="center">
+        <md-button
+          class="md-raised md-primary"
+          ng-disabled="!vm.product.available"
+          layout="row"
+          layout-align="center center"
+          ng-click="vm.addToCart()"
+        >
+          <i class="material-icons" ng-if="vm.product.available">
+            shopping_cart
+          </i>
+          <span>&nbsp;</span>
+          <span>{{vm.product.available ? 'Agregar al carrito' : 'No disponible'}}</span>
+        </md-button>
+      </div>
+    </md-card-content>
+  </md-card>
+</md-content>
