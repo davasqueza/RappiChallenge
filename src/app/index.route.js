@@ -7,11 +7,6 @@
 
   function routeConfig($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'app/main/landing/landing.html',
-        controller: 'LandingController',
-        controllerAs: 'vm'
-      })
       .when('/:productID*/p', {
         templateUrl: 'app/product/product.html',
         controller: 'ProductController',
@@ -23,7 +18,7 @@
         controllerAs: 'vm'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/1'
       });
 
     $locationProvider.html5Mode(true);

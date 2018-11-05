@@ -84,7 +84,7 @@
 
     function loadCartSummary() {
       try {
-        cartSummary = JSON.parse(localStorage.cartSummary);
+        cartSummary = angular.fromJson(localStorage.cartSummary);
         resource.products.get().$promise.then(function (response) {
           cartSummary = _.map(cartSummary, function (item) {
             item.product = _.find(response.products, function (product) {
@@ -137,7 +137,7 @@
           quantity: item.quantity
         }
       });
-      localStorage.cartSummary = JSON.stringify(parsedCartSummary);
+      localStorage.cartSummary = angular.toJson(parsedCartSummary);
     }
   }
 })();
