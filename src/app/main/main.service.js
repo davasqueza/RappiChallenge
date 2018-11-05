@@ -71,16 +71,16 @@
       }
     }
 
-    function addToCart(product, amount) {
+    function addToCart(product, quantity) {
       var productOnCart = _.find(cartSummary, function (item) {
         return item.product.id === product.id;
       });
 
       if(productOnCart){
-        productOnCart.amount = amount;
+        productOnCart.quantity = quantity;
       }
       else{
-        cartSummary.push({product: product, amount: amount});
+        cartSummary.push({product: product, quantity: quantity});
       }
 
       saveCartSummary();
@@ -100,7 +100,7 @@
       var parsedCartSummary = _.map(cartSummary, function (item) {
         return {
           product: _.pick(item.product, "id"),
-          amount: item.amount
+          quantity: item.quantity
         }
       });
       localStorage.cartSummary = JSON.stringify(parsedCartSummary);

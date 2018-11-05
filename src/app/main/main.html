@@ -25,6 +25,8 @@
   <cart-summary
     items="MainCtrl.productsOnCart()"
     toggle="MainCtrl.toggleSummaryCart()"
+    update-amount="MainCtrl.updateAmount(product, quantity)"
+    remove-to-cart="MainCtrl.removeToCart(productID)"
   ></cart-summary>
 
   <md-content flex id="mainContainer">

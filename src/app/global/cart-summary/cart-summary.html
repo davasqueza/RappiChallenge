@@ -22,22 +22,22 @@
             <span>{{item.product.price | currency}}</span>
 
             <div layout="row" layout-align="start center">
-              <md-button class="md-icon-button">
+              <md-button class="md-icon-button" ng-click="removeQuantity($event, item)">
                 <i class="material-icons">
                   chevron_left
                 </i>
               </md-button>
 
-              <b>{{item.amount}}</b>
+              <b>{{item.quantity}}</b>
 
-              <md-button class="md-icon-button">
+              <md-button class="md-icon-button" ng-click="addQuantity($event, item)">
                 <i class="material-icons">
                   chevron_right
                 </i>
               </md-button>
             </div>
           </div>
-          <md-button class="md-icon-button">
+          <md-button class="md-icon-button" ng-click="removeProduct($event, item.product.id)">
             <i class="material-icons">
               close
             </i>

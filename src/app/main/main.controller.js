@@ -11,6 +11,8 @@
     vm.toggleMenu = toggleMenu;
     vm.toggleSummaryCart = toggleSummaryCart;
     vm.productsOnCart = MainService.getCartSummary;
+    vm.updateAmount = MainService.addToCart;
+    vm.removeToCart = MainService.removeToCart;
 
     function toggleMenu() {
       $mdSidenav('menu').toggle();
