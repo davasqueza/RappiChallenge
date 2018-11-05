@@ -56,7 +56,8 @@
         locals: {
           filters: angular.copy(vm.filters),
           maxPrice: _.max(vm.products, "price").price,
-          maxQuantity: _.max(vm.products, "quantity").quantity
+          maxQuantity: _.max(vm.products, "quantity").quantity,
+          showSearchByName: vm.showSearchByName
         }
       }).then(function (filters) {
         if(filters){

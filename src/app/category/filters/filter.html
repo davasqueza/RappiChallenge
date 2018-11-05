@@ -1,7 +1,18 @@
 <md-dialog>
   <md-content layout-padding>
 
-    <div layout-xs="column">
+    <div
+      layout="row"
+      layout-align="space-between center"
+      layout-xs="column"
+      layout-align-xs="start stretch"
+      layout-wrap
+    >
+      <md-input-container flex="100" ng-if="vm.showSearchByName">
+        <label>Nombre:</label>
+        <input ng-model="vm.filters.name" title="name">
+      </md-input-container>
+
       <md-input-container flex-xs="100">
         <label>Disponibilidad:</label>
         <md-select ng-model="vm.filters.available">
