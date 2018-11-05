@@ -1,10 +1,10 @@
 <md-sidenav class="md-sidenav-right cart-summary md-whiteframe-z2" md-component-id='summaryCart'>
-  <md-content>
-    <md-toolbar layout="row" layout-align="space-between center">
+  <md-content layout-fill layout="column">
+    <md-toolbar>
       <h1 class="md-toolbar-tools">Resumen de tu compra</h1>
     </md-toolbar>
 
-    <div layout="column" layout-align="space-between center">
+    <div layout="column" layout-align="space-between" flex>
       <a
         ng-repeat="item in items"
         layout="column"
@@ -49,8 +49,6 @@
       <h3 ng-if="!items.length">
         Tu carrito de compras está vacío
       </h3>
-
-      <span flex></span>
 
       <md-button class="md-primary md-raised" ng-click="toggle()" aria-label="continue buy">
         Seguir comprando
