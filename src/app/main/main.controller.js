@@ -9,9 +9,17 @@
     var vm = this;
 
     vm.toggleMenu = toggleMenu;
+    vm.toggleSummaryCart = toggleSummaryCart;
+    vm.productsOnCart = MainService.getCartSummary;
+    vm.updateAmount = MainService.addToCart;
+    vm.removeToCart = MainService.removeToCart;
 
     function toggleMenu() {
-      $mdSidenav('left').toggle();
+      $mdSidenav('menu').toggle();
+    }
+
+    function toggleSummaryCart() {
+      $mdSidenav('summaryCart').toggle();
     }
 
     function loadMenuItems() {

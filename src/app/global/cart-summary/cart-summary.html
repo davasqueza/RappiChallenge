@@ -1,0 +1,60 @@
+<md-sidenav class="md-sidenav-right cart-summary md-whiteframe-z2" md-component-id='summaryCart'>
+  <md-content>
+    <md-toolbar layout="row" layout-align="space-between center">
+      <h1 class="md-toolbar-tools">Resumen de tu compra</h1>
+    </md-toolbar>
+
+    <div layout="column" layout-align="space-between center">
+      <a
+        ng-repeat="item in items"
+        layout="column"
+        ng-href="/{{item.product.id}}/p"
+        class="disable-hyperlinks"
+        ng-click="toggle()"
+      >
+        <div layout="row" layout-align="center center" flex>
+          <div
+            class="productImage"
+            ng-style="{'background-image': 'url(/assets/images/products/'+item.product.image+')'}"
+          ></div>
+          <div layout="column" flex>
+            <b>{{item.product.name}}</b>
+            <span>{{item.product.price | currency}}</span>
+
+            <div layout="row" layout-align="start center">
+              <md-button class="md-icon-button" ng-click="removeQuantity($event, item)">
+                <i class="material-icons">
+                  chevron_left
+                </i>
+              </md-button>
+
+              <b>{{item.quantity}}</b>
+
+              <md-button class="md-icon-button" ng-click="addQuantity($event, item)">
+                <i class="material-icons">
+                  chevron_right
+                </i>
+              </md-button>
+            </div>
+          </div>
+          <md-button class="md-icon-button" ng-click="removeProduct($event, item.product.id)">
+            <i class="material-icons">
+              close
+            </i>
+          </md-button>
+        </div>
+        <md-divider></md-divider>
+      </a>
+
+      <h3 ng-if="!items.length">
+        Tu carrito de compras está vacío
+      </h3>
+
+      <span flex></span>
+
+      <md-button class="md-primary md-raised" ng-click="toggle()" aria-label="continue buy">
+        Seguir comprando
+      </md-button>
+    </div>
+  </md-content>
+</md-sidenav>
