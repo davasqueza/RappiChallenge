@@ -8,6 +8,7 @@
   function MainService($resource, $log) {
     var service = {
       getAllCategories: getAllCategories,
+      getCategoryByPath: getCategoryByPath,
       getProductsByCategoryID: getProductsByCategoryID,
       getProductByID: getProductByID,
       getCartSummary: getCartSummary,
@@ -26,6 +27,28 @@
 
     function getAllCategories() {
       return resource.categories.get().$promise;
+    }
+
+    function getCategoryByPath(path) {
+      var categoriesList = path.split("/");
+      return resource.categories.get().$promise.then(function (response) {
+        var sublevels = response.categories;
+        var category;
+        while (categoriesList.length && sublevels){
+          var categoryID = Number(categoriesList.shift());
+          category = _.find(sublevels, function (category) {
+            return category.id === categoryID;
+          });
+
+          if(!category){
+            return {};
+          }
+
+          sublevels = category.sublevels;
+        }
+
+        return category;
+      });
     }
 
     function getProductsByCategoryID(categoryID) {

@@ -37,6 +37,16 @@
         });
     }
 
+    function detectLastCategory() {
+      MainService.getCategoryByPath($routeParams.categoryPath)
+        .then(function (category) {
+          vm.showSearchByName = _.isUndefined(category.sublevels);
+        })
+        .catch(function (error) {
+          $log.warn("Error while trying to detect last item", error.message);
+        });
+    }
+
     function openFilterDialog($event) {
       $mdDialog.show({
         controller: "FilterController",
@@ -46,7 +56,8 @@
         locals: {
           filters: angular.copy(vm.filters),
           maxPrice: _.max(vm.products, "price").price,
-          maxQuantity: _.max(vm.products, "quantity").quantity
+          maxQuantity: _.max(vm.products, "quantity").quantity,
+          showSearchByName: vm.showSearchByName
         }
       }).then(function (filters) {
         if(filters){
@@ -56,7 +67,7 @@
     }
 
     function comparator(actual, expected) {
-      var isValid;
+      var isValid = false;
 
       if(_.isObject(expected)){
         var isValidMin = actual > expected.min;
@@ -64,7 +75,13 @@
 
         isValid = isValidMax && isValidMin;
       }
-      else{
+      if(_.isString(expected)){
+        var sanitizedActual = actual.toLowerCase().trim();
+        var sanitizedExpected = expected.toLowerCase().trim();
+
+        isValid = sanitizedActual.indexOf(sanitizedExpected) !== -1;
+      }
+      if(_.isBoolean(expected)){
        isValid = actual === expected;
       }
 
@@ -79,5 +96,6 @@
     }
 
     loadProducts();
+    detectLastCategory();
   }
 })();

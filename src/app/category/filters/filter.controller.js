@@ -6,11 +6,12 @@
     .controller('FilterController', FilterController);
 
   /** @ngInject */
-  function FilterController($mdDialog, filters, maxPrice, maxQuantity) {
+  function FilterController($mdDialog, filters, maxPrice, maxQuantity, showSearchByName) {
     var vm = this;
 
     vm.closeFiltersDialog = closeFiltersDialog;
     vm.clearFilters = clearFilters;
+    vm.showSearchByName = showSearchByName;
     vm.search = search;
     vm.filters = filters;
 
