@@ -67,7 +67,7 @@
     }
 
     function comparator(actual, expected) {
-      var isValid;
+      var isValid = false;
 
       if(_.isObject(expected)){
         var isValidMin = actual > expected.min;
@@ -75,7 +75,13 @@
 
         isValid = isValidMax && isValidMin;
       }
-      else{
+      if(_.isString(expected)){
+        var sanitizedActual = actual.toLowerCase().trim();
+        var sanitizedExpected = expected.toLowerCase().trim();
+
+        isValid = sanitizedActual.indexOf(sanitizedExpected) !== -1;
+      }
+      if(_.isBoolean(expected)){
        isValid = actual === expected;
       }
 
