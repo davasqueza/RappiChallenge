@@ -73,7 +73,7 @@
 
     function addToCart(product, amount) {
       var productOnCart = _.find(cartSummary, function (item) {
-        return item.id = product.id;
+        return item.product.id === product.id;
       });
 
       if(productOnCart){

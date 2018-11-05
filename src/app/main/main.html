@@ -5,9 +5,13 @@
     layout="row"
     md-whiteframe="5"
   >
-    <div class="md-toolbar-tools">
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
       <md-button class="md-icon-button" aria-label="menu" ng-click="MainCtrl.toggleMenu()">
         <i class="material-icons">menu</i>
+      </md-button>
+      <md-button layout="row" layout-align="center center" aria-label="cart" ng-click="MainCtrl.toggleSummaryCart()">
+        <i class="material-icons">shopping_cart</i>
+        <span ng-if="MainCtrl.productsOnCart().length"> X {{MainCtrl.productsOnCart().length}}</span>
       </md-button>
     </div>
   </md-toolbar >
@@ -17,6 +21,11 @@
     toggle="MainCtrl.toggleMenu()"
     items="MainCtrl.menuItems"
   ></main-menu>
+
+  <cart-summary
+    items="MainCtrl.productsOnCart()"
+    toggle="MainCtrl.toggleSummaryCart()"
+  ></cart-summary>
 
   <md-content flex id="mainContainer">
     <md-content ng-view flex layout="column" class="ng-view-container"></md-content>

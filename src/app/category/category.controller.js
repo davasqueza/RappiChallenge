@@ -6,11 +6,13 @@
     .controller('CategoryController', CategoryController);
 
   /** @ngInject */
-  function CategoryController(MainService, $routeParams, toastr, $log, $mdDialog) {
+  function CategoryController(MainService, $routeParams, toastr, $log, $mdDialog, $scope) {
     var vm = this;
 
     vm.openFilterDialog = openFilterDialog;
     vm.comparator = comparator;
+    vm.addToCart = addToCart;
+
     vm.filters = {};
 
     vm.sortBy = [
@@ -67,6 +69,13 @@
       }
 
       return isValid;
+    }
+
+    function addToCart($event, product) {
+      $event.preventDefault();
+
+      MainService.addToCart(product, 1);
+      $scope.$parent.MainCtrl.toggleSummaryCart();
     }
 
     loadProducts();
