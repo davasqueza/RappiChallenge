@@ -94,6 +94,8 @@
       if(productIndex !== -1){
         cartSummary.splice(productIndex, 1);
       }
+
+      saveCartSummary();
     }
 
     function saveCartSummary() {
