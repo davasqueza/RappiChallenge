@@ -53,6 +53,15 @@
     function loadCartSummary() {
       try {
         cartSummary = JSON.parse(localStorage.cartSummary);
+        resource.products.get().$promise.then(function (response) {
+          cartSummary = _.map(cartSummary, function (item) {
+            item.product = _.find(response.products, function (product) {
+              return product.id === item.product.id;
+            });
+
+            return item;
+          });
+        });
       }
       catch (err){
         localStorage.removeItem("cartSummary");
@@ -62,24 +71,24 @@
       }
     }
 
-    function addToCart(productID, amount) {
-      var product = _.find(cartSummary, function (product) {
-        return product.id = productID;
+    function addToCart(product, amount) {
+      var productOnCart = _.find(cartSummary, function (item) {
+        return item.id = product.id;
       });
 
-      if(product){
-        product.amount = amount;
+      if(productOnCart){
+        productOnCart.amount = amount;
       }
       else{
-        cartSummary.push({id: productID, amount: amount});
+        cartSummary.push({product: product, amount: amount});
       }
 
       saveCartSummary();
     }
 
     function removeToCart(productID) {
-      var productIndex = _.findIndex(cartSummary, function (product) {
-        return product.id = productID;
+      var productIndex = _.findIndex(cartSummary, function (item) {
+        return item.product.id = productID;
       });
 
       if(productIndex !== -1){
@@ -88,7 +97,13 @@
     }
 
     function saveCartSummary() {
-      localStorage.cartSummary = JSON.stringify(cartSummary);
+      var parsedCartSummary = _.map(cartSummary, function (item) {
+        return {
+          product: _.pick(item.product, "id"),
+          amount: item.amount
+        }
+      });
+      localStorage.cartSummary = JSON.stringify(parsedCartSummary);
     }
   }
 })();
